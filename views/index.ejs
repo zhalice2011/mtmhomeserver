@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>MTM数据采集app下载</title>
+    <link rel="stylesheet" href="css/index.css" inline>
+</head>
+<body>
+    <div class="page_bg">
+    </div>
+    <div class="mtm-logo">
+        <img src="/images/mtm.png">
+    </div>
+    <div class="mtm-text">
+        <p>致力于慢性疾病不可治愈性</p>
+        <p>致力于慢性疾病长期管理的需要</p>
+        <p>最终实现患者健康与商业价值层面的共赢</p>
+        <p>软件由北京瑞启医药信息科技有限公司提供</p>
+    </div>
+    <div class="download_box">
+        <ul>
+            <li style="display:none">
+                <a id="ios" href="http://localhost:5001/file/mtm.apk" title="iphone">
+                    <i class="iphone_icon"></i>
+                    <i class="iphone_word"></i>
+                </a>
+            </li>
+            <li>
+                <a id="ad" href="/file/mtm.apk" title="Android">
+                    <i class="Android_icon"></i>
+                    <i class="Android_word"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom_pic">
+        <img src="/images/bottom_pic.png">
+    </div>
+</body>
+<!--
+<script type="text/javascript">
+    function is_weixin() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    var isWeixin = is_weixin();
+    var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+    var weixinTip = $('<div id="weixinTip"><p><img src="live_weixin.png" alt="微信打开"/></p></div>');
+    
+    if(isWeixin){
+        $("body").append(weixinTip);
+    }
+    $("#weixinTip").css({
+        "position":"fixed",
+        "left":"0",
+        "top":"0",
+        "height":winHeight,
+        "width":"100%",
+        "z-index":"1000",
+        "background-color":"rgba(0,0,0,0.8)",
+        "filter":"alpha(opacity=80)",
+    });
+    $("#weixinTip p").css({
+        "text-align":"center",
+        "margin-top":"10%",
+        "padding-left":"5%",
+        "padding-right":"5%"
+    });
+</script>
+-->
+</html>

@@ -1,16 +1,18 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var cfg = require('./config/index')
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cfg = require('./config/index')
+// const session = require('wafer-node-session');
+// const RedisStore = require('connect-redis')(session);  //redis缓存
 
 //连接mongodb开始------
-var dbURI = 'mongodb://'+cfg.db_server+'/'+cfg.db;
+const dbURI = 'mongodb://'+cfg.db_server+'/'+cfg.db;
 mongoose.connect(dbURI);
-var db =  mongoose.connection;
+const db =  mongoose.connection;
 db.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
 });
@@ -24,10 +26,8 @@ db.on('error',function (err) {
     console.log('Mongoose connection error: ' + err);
 });
 //连接mongodb结束------
-
-var index = require('./routes/index');
-
-var app = express();
+const index = require('./routes/index');
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,21 +40,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 微信小程序 Node 会话管理中间件
+// app.use(session({
+//     // 小程序 appId
+//     appId:   cfg.applet.AppID,
+//     // 小程序 appSecret
+//     appSecret: cfg.applet.AppSecret,
+//     // 登录地址
+//     loginPath: '/user/login',
+//     // 会话存储
+//     store: new RedisStore({ 
+//         "zhoudali":"我还是很喜欢你的"
+//     })
+// }));
 app.use('/', index);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');

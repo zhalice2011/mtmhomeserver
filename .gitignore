@@ -7,7 +7,12 @@ bin-release/
 
 # Other files and folders
 .settings/
-
+node_modules
+example/**/dist
+package-lock.json
+.idea
+.vscode/
+*.log
 # Executables
 *.swf
 *.air
